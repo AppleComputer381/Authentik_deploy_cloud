@@ -13,10 +13,12 @@ EOF
 
 apt update
 apt install -y docker.io docker-compose git curl
-GIT_SSH_COMMAND="ssh -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no" git clone ${git_repo}
-mv Test_Authentik Authentik_config
+GIT_SSH_COMMAND="ssh -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no" git clone ${git_repo} Authentik_config
+cd Authentik_config/authentik
+
 echo "PG_PASS=$(openssl rand -base64 36 | tr -d '\n')" >> .env
 echo "AUTHENTIK_SECRET_KEY=$(openssl rand -base64 60 | tr -d '\n')" >> .env
 echo "AUTHENTIK_ERROR_REPORTING__ENABLED=true" >> .env
+
 docker compose pull
 docker compose up -d

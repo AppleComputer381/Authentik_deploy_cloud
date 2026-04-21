@@ -39,7 +39,7 @@ resource "google_storage_bucket" "tfstate-bucket" {
 }
 
 resource "google_compute_instance" "vm-terraform" {
-    name = "vm-terraform"
+    name = "vm-terraform2"
     machine_type = "e2-medium"
     zone = "northamerica-northeast1-a"
     boot_disk {
