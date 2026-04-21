@@ -33,6 +33,7 @@ resource "google_compute_instance" "vm-terraform" {
     name = "vm-terraform5"
     machine_type = "e2-medium"
     zone = "northamerica-northeast1-a"
+    tags = ["authentik-server"]
     boot_disk {
         initialize_params {
             image = "debian-cloud/debian-11"
@@ -65,11 +66,11 @@ resource "google_compute_firewall" "allow-authentik" {
 
     allow {
         protocol = "tcp"
-        ports = ["9000", "9443", "80", "443"]
+        ports = ["80", "443"]
     }
 
     source_ranges = ["0.0.0.0/0"]
-    target_tags = []
+    target_tags = ["authentik-server"]
 }
 
 output "authentik_ip" {
