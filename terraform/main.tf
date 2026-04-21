@@ -59,3 +59,19 @@ resource "google_compute_instance" "vm-terraform" {
     })
 }
 
+resource "google_compute_firewall" "allow-authentik" {
+    name = "allow-authentik"
+    network = "default"
+
+    allow {
+        protocol = "tcp"
+        ports = ["9000", "9443"]
+    }
+
+    source_ranges = ["0.0.0.0/0"]
+    target_tags = []
+}
+
+output "authentik_ip" {
+    value = google_compute_instance.vm-terraform.network_interface.0.access_config.0.nat_ip
+}
