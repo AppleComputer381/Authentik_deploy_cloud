@@ -11,6 +11,7 @@ env:
     TF_VAR_project: ${{ secrets.GCP_PROJECT_ID }}
     TF_VAR_region: 'northamerica-northeast1'
     TF_VAR_ssh_private_key: ${{ secrets.VM_SSH_KEY }}
+    TF_VAR_git_repo: 'git@github.com:AppleComputer381/Authentik_deploy_cloud.git'
 
 jobs:
     terraform:
