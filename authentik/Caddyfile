@@ -1,0 +1,3 @@
+auth.tondomaine.fr {
+    reverse_proxy server:9000
+}
