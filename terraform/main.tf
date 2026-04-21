@@ -30,7 +30,7 @@ resource "google_project_iam_member" "sa_terraform-vm_iam" {
 
 
 resource "google_compute_instance" "vm-terraform" {
-    name = "vm-terraform4"
+    name = "vm-terraform5"
     machine_type = "e2-medium"
     zone = "northamerica-northeast1-a"
     boot_disk {
