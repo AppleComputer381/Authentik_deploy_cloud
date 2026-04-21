@@ -65,7 +65,7 @@ resource "google_compute_firewall" "allow-authentik" {
 
     allow {
         protocol = "tcp"
-        ports = ["9000", "9443"]
+        ports = ["9000", "9443", "80", "443"]
     }
 
     source_ranges = ["0.0.0.0/0"]
