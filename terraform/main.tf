@@ -4,10 +4,10 @@ terraform{
      source = "hashicorp/google"   
     }
     }
-    backend "gcs" {
-       bucket = "tfstate-authentik"
-       prefix = "terraform/state"
-    }
+    #backend "gcs" {
+    #   bucket = "tfstate-authentik"
+    #   prefix = "terraform/state"
+    #}
 }
 
 provider "google" {
@@ -31,6 +31,7 @@ resource "google_storage_bucket" "tfstate-bucket" {
     name = "tfstate-authentik"
     location = var.region
     public_access_prevention = "enforced"
+    uniform_bucket_level_access = true
     force_destroy = false
     versioning {
         enabled = true
