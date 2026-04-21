@@ -4,10 +4,10 @@ terraform{
      source = "hashicorp/google"   
     }
     }
-    #backend "gcs" {
-    #   bucket = "tfstate-authentik"
-    #   prefix = "terraform/state"
-    #}
+    backend "gcs" {
+       bucket = "tfstate-authentik"
+       prefix = "terraform/state"
+    }
 }
 
 provider "google" {
